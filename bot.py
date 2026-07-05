@@ -18,11 +18,21 @@ def main():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     adb_path = ensure_adb(base_dir)
     client.init(adb_path)
-    client.connect_usb()
+    
+    # Route to wireless or USB connection
+    if args["wireless"]:
+        # For wireless mode, connection is handled in core.engine.run()
+        pass
+    else:
+        # For USB mode, connect here
+        client.connect_usb()
 
     run(
         targets=args["targets"],
         save_ss=args["save_ss"],
+        wireless=args["wireless"],
+        wireless_ip=args["wireless_ip"],
+        wireless_port=args["wireless_port"],
     )
 
 
