@@ -52,7 +52,7 @@ jobs:
           pyinstaller --onefile --name WhatsApp-Key-Bot --add-data "image:image" --hidden-import=easyocr --hidden-import=cv2 --hidden-import=colorama --collect-all easyocr bot.py
 
       - name: Upload artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ matrix.os }}
           path: dist/
@@ -67,7 +67,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Download all artifacts
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           path: artifacts
 
